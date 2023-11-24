@@ -13,6 +13,11 @@ struct WeatherApp: App {
         WindowGroup {
             ContentView()
         }
+        
+        WindowGroup(id: "WeatherRealityView") {
+            WeatherRealityView(city: "Tokyo", weather: "Sunny")
+        }
+        .defaultSize(CGSize(width: 800, height: 1000))
 
         ImmersiveSpace(id: "ImmersiveSpace") {
             ImmersiveView()

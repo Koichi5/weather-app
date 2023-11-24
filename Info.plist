@@ -5,8 +5,6 @@
 	<key>OpenWeatherApiKey</key>
 	<string>2b40db74e0e915da46f38a8910070d23
 </string>
-	<key>CFBundleIdentifier</key>
-	<string></string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationPreferredDefaultSceneSessionRole</key>

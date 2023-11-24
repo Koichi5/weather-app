@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct HourlyForecast {
+struct HourlyForecast: Hashable {
     let time: String
     let temperature: Double
     var day: String {
         String(time.prefix(10))
     }
+    let weatherCode: Int
 }

@@ -11,7 +11,8 @@ struct Current: Codable {
     let time: String
     let interval: Int
     let temperature2M: Double
-    let rain, weatherCode: Int
+    let rain: Double
+    let weatherCode: Int
 
     enum CodingKeys: String, CodingKey {
         case time, interval

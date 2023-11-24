@@ -67,3 +67,36 @@ func weatherDescription(from code: Int) -> String {
         return "不明"
     }
 }
+
+func weatherDescriptionInEnglish(from code: Int) -> String {
+    switch code {
+    case 0:
+        return "Sunny"
+    case 1, 2, 3:
+        return "Cloudy"
+    case 45, 48:
+        return "Fog"
+    case 51, 53, 55:
+        return "Drizzle"
+    case 56, 57:
+        return "FreezingDrizzle"
+    case 61, 63, 65:
+        return "Rain"
+    case 66, 67:
+        return "FreezingRain"
+    case 71, 73, 75:
+        return "Snow"
+    case 77:
+        return "Sleet"
+    case 80, 81, 82:
+        return "Showers"
+    case 85, 86:
+        return "SnowShowers"
+    case 95:
+        return "Thunderstorm"
+    case 96, 99:
+        return "ThunderstormWithHail"
+    default:
+        return "Unknown"
+    }
+}

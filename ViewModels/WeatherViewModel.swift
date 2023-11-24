@@ -177,14 +177,19 @@
 ////    }
 ////
 ////}
-
+import SwiftUI
 import Foundation
 
 class WeatherViewModel: ObservableObject {
+    @ObservedObject var locationViewModel = LocationViewModel()
     @Published var weatherData: Weather?
     
+    init() {
+        fetchWeatherData(latitude: String($locationViewModel.location.wrappedValue.coordinate.latitude), longitude: String($locationViewModel.location.wrappedValue.coordinate.longitude), timeZone: "Asia%2FTokyo")
+    }
+    
     func fetchWeatherData(latitude: String, longitude: String, timeZone: String) {
-//    https://api.open-meteo.com/v1/forecast?latitude=35.6895&longitude=139.6917&current=temperature_2m,rain,weather_code&hourly=temperature_2m,rain,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo
+        print("----- WeatherViewModel fetch weather data fired ! -----")
         let urlString = "https://api.open-meteo.com/v1/forecast?latitude=\(latitude)&longitude=\(longitude)&current=temperature_2m,rain,weather_code&hourly=temperature_2m,rain,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=\(timeZone)"
         
         guard let url = URL(string: urlString) else {

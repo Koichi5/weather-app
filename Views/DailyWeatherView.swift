@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Charts
+import RealityKit
+import RealityKitContent
 
 struct DailyWeatherView: View {
     let hourlyForecast: [HourlyForecast]
@@ -17,16 +19,31 @@ struct DailyWeatherView: View {
     @State private var temperatureData: [TemperatureData] = []
     
     var body: some View {
-        VStack {
-            Chart(temperatureData) { dataRow in
-                LineMark(x: .value("Day", dataRow.day), y: .value("Value", dataRow.value))
-                    .interpolationMethod(.catmullRom)
-                    .foregroundStyle(Color.white)
-                    .lineStyle(StrokeStyle(lineWidth: 5))
-                    .symbol(.circle)
+        ScrollView {
+            VStack {
+                Chart(temperatureData) { dataRow in
+                    LineMark(x: .value("Day", dataRow.day), y: .value("Value", dataRow.value))
+                        .interpolationMethod(.catmullRom)
+                        .foregroundStyle(Color.white)
+                        .lineStyle(StrokeStyle(lineWidth: 5))
+                        .symbol(.circle)
+                }
+                .foregroundColor(Color.red)
+                .frame(width: 700, height: 400)
+                Model3D(named: "wood_base_copy", bundle: realityKitContentBundle)
+//                ScrollView {
+//                    HStack {
+//                        ForEach(hourlyForecast, id: \.self) { forecast in
+//                            let modelPath = weatherDescriptionInEnglish(from: forecast.weatherCode)+"Scene"
+//                            VStack {
+//                                Text("\(forecast.weatherCode)")
+//                                Model3D(named: modelPath, bundle: realityKitContentBundle)
+//                                    .padding(.bottom, 50)
+//                            }
+//                        }
+//                    }
+//                }
             }
-            .foregroundColor(Color.red)
-            .frame(width: 700, height: 400)
         }
         .navigationTitle("\(month)月\(day)日")
         .onAppear {

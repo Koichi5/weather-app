@@ -20,6 +20,10 @@ struct City: Codable, Identifiable, Hashable {
     }
 }
 
+class SelectedCity: ObservableObject {
+    @Published var city = City(name: "", latitude: 0.0, longitude: 0.0, timeZone: "")
+}
+
 //let cities: [City] = [
 //    City(name: "Tokyo", latitude: 35.6895, longitude: 139.6917, timeZone: "Asia%2FTokyo"),
 //    City(name: "Osaka", latitude: 34.686, longitude: 135.520, timeZone: "Asia%2FTokyo")
